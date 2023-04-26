@@ -27,7 +27,6 @@ class Map:
 
     def print_map(self):
         for i in range(self.size[0]-1, -1, -1):
-            print(i)
             print(self.grid[i])
 
     @staticmethod
