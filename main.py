@@ -1,22 +1,32 @@
+move = 0
+SIZE_OF_MAP = 0
+PLAYERS_DICT = {0: "X",
+                1: "0"}
+
+
 class Cell:
-
     def __init__(self):
-        self.status = 0
-
-    def point_choice(self):
         self.status = "."
 
+    def point_choice(self):
+        global move
+        if self.status == ".":
+            self.status = "0"
+        else:
+            print("Выберите другую точку, данная уже занята")
+            move -= 1
+
     def star_choice(self):
-        self.status = "X"
+        global move
+        if self.status == ".":
+            self.status = "X"
+        else:
+            print("Выберите другую точку, данная уже занята")
+            move -= 1
 
     def __repr__(self):
         return f"{self.status}"
 
-
-move = 0
-SIZE_OF_MAP = 0
-PLAYERS_DICT = {0: "X",
-                1: "."}
 
 while type(SIZE_OF_MAP) != list:
     print("Введите координаты поля в фомате: x y")
