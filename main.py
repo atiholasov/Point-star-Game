@@ -30,6 +30,8 @@ while True:
             print("Выберите другую точку, данная уже занята")
             number_of_move -= 1
 
+        Map.zone_check()
+
     except ValueError:
         print("Следуйте формату ввода: x y")
         number_of_move -= 1

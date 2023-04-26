@@ -41,3 +41,6 @@ class Map:
             self.grid[write_y_coordinate][write_x_coordinate].star_choice()
         else:                               # Ходит второй игрок .
             self.grid[write_y_coordinate][write_x_coordinate].point_choice()
+
+    def zone_check(self):
+        pass
