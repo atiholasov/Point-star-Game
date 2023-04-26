@@ -1,45 +1,12 @@
+import Cell_class as Cell
+import Map_class
+
 move = 0
-SIZE_OF_MAP = 0
 PLAYERS_DICT = {0: "X",
                 1: "0"}
 
-
-class Cell:
-    def __init__(self):
-        self.status = "."
-
-    def point_choice(self):
-        global move
-        if self.status == ".":
-            self.status = "0"
-        else:
-            print("Выберите другую точку, данная уже занята")
-            move -= 1
-
-    def star_choice(self):
-        global move
-        if self.status == ".":
-            self.status = "X"
-        else:
-            print("Выберите другую точку, данная уже занята")
-            move -= 1
-
-    def __repr__(self):
-        return f"{self.status}"
-
-
-while type(SIZE_OF_MAP) != list:
-    print("Введите координаты поля в фомате: x y")
-    try:
-        SIZE = input().split()
-        SIZE_OF_MAP = [int(SIZE[1]), int(SIZE[0])]
-    except (ValueError, IndexError):
-        print("Следуйте формату ввода: x y")
-
-Map = [[] for i in range(SIZE_OF_MAP[0])]
-for i in range(SIZE_OF_MAP[0]):
-    for j in range(SIZE_OF_MAP[1]):
-        Map[i].append(Cell())
+Map = Map_class.Map()
+Map.creating_empty_map()
 
 while True:
 
@@ -62,6 +29,9 @@ while True:
                 Map[SIZE_OF_MAP[1] - int(coordinates_y)][int(coordinates_x) - 1].point_choice()
         except IndexError:
             print("Введенные значения вне игравого поля")
+            move -= 1
+        except Cell.RechoiceError:
+            print("Выберите другую точку, данная уже занята")
             move -= 1
 
     except ValueError:
